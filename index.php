@@ -14,17 +14,24 @@ Gestire ulteriori parametri per la password: quali caratteri usare fra numeri, l
 $passwordLength = $_GET["length"];
 var_dump($_GET);
 
-function generate_password()
+function password_generator($length)
 {
     $characters = "'0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$%&\=?!";
+
+    var_dump(substr(str_shuffle($characters), 0, $length));
+
+    return substr(str_shuffle($characters), 0, $length);
+
     // $lowerCaseChar= "abcdefghijklmnopqrstuvwxyz"; 
     // $upperCaseChar= "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     // $numbers = '0123456789';
     // $symbols ="$%&\=?!"
-
 }
+;
 
-?>
+password_generator($passwordLength)
+
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -43,9 +50,9 @@ function generate_password()
 
     <form method="get">
         <div class="mb-3">
-            <label for="length" class="form-label">Enter the length of the password (only number)
+            <label for="length" class="form-label">Enter the length of the password (Max 70)
             </label>
-            <input type="number" class="form-control" name="length" id="length" placeholder="Enter the length of the password (only number)
+            <input type="number" class="form-control" name="length" id="length" placeholder="Enter the length of the password (max 70)
 ">
             <button type="submit" class="btn btn-primary">Enter</button>
         </div>
