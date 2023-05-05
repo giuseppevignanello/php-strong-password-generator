@@ -10,28 +10,24 @@ Milestone 4 (BONUS)
 Gestire ulteriori parametri per la password: quali caratteri usare fra numeri, lettere e simboli. Possono essere scelti singolarmente (es. solo numeri) oppure possono essere combinati fra loro (es. numeri e simboli, oppure tutti e tre insieme). Dare all’utente anche la possibilità di permettere o meno la ripetizione di caratteri uguali. -->
 
 <?php
-
+session_start();
 include __DIR__ . "/functions.PHP";
 
 $passwordLength = $_GET["length"];
+//password length selected by user
 var_dump($_GET);
 
-$password = password_generator($passwordLength)
-    //commento per avere una modifica da pushare 
+$password = password_generator($passwordLength);
+//password constant 
 
+$_SESSION["password"] = $password;
+
+if (isset($passwordLength)) {
+    header('Location: ./showPassword.php');
+}
+
+include __DIR__ . "/views/layout/head.php"
     ?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <title>Strong Password Generator</title>
-</head>
 
 <body>
 
@@ -44,9 +40,6 @@ $password = password_generator($passwordLength)
             <button type="submit" class="btn btn-primary">Enter</button>
         </div>
     </form>
-    <p>
-        <?php echo $password ?>
-    </p>
 
 </body>
 
