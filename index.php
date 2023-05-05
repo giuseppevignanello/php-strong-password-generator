@@ -16,6 +16,8 @@ include __DIR__ . "/functions.PHP";
 $passwordLength = $_GET["length"];
 var_dump($_GET);
 
+//commento per avere una modifica da pushare 
+
 ?>
 
 <!DOCTYPE html>
