@@ -13,20 +13,33 @@ Gestire ulteriori parametri per la password: quali caratteri usare fra numeri, l
 session_start();
 include __DIR__ . "/functions.PHP";
 
-$passwordLength = $_GET["length"];
-//password length selected by user
-
 if (!empty($_GET["length"])) {
+    $passwordLength = $_GET["length"];
+    //password length selected by user
     //avoid to show 70 char password long before to the user choice 
-    $password = password_generator($passwordLength);
+    $characters = "";
+    if (!empty($_GET["letters"])) {
+        $characters .= "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    }
+    ;
+    if (!empty($_GET["numbers"])) {
+        $characters .= "0123456789";
+    }
+    ;
+    if (!empty($_GET["symbols"])) {
+        $characters .= "$%&\=?!";
+    }
+    ;
+    $password = password_generator($passwordLength, $characters);
+    $_SESSION["password"] = $password;
+    header('Location: ./showPassword.php');
+
+
 }
 
-$_SESSION["password"] = $password;
+
 //password constant 
 
-if (isset($passwordLength)) {
-    header('Location: ./showPassword.php');
-}
 
 //Redirect
 
