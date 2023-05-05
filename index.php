@@ -16,9 +16,10 @@ include __DIR__ . "/functions.PHP";
 $passwordLength = $_GET["length"];
 var_dump($_GET);
 
-//commento per avere una modifica da pushare 
+$password = password_generator($passwordLength)
+    //commento per avere una modifica da pushare 
 
-?>
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,8 +30,7 @@ var_dump($_GET);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-</head>
-<title>Strong Password Generator</title>
+    <title>Strong Password Generator</title>
 </head>
 
 <body>
@@ -45,7 +45,7 @@ var_dump($_GET);
         </div>
     </form>
     <p>
-        <?php password_generator($passwordLength) ?>
+        <?php echo $password ?>
     </p>
 
 </body>
