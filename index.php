@@ -18,13 +18,17 @@ $passwordLength = $_GET["length"];
 var_dump($_GET);
 
 $password = password_generator($passwordLength);
+$_SESSION["password"] = $password;
 //password constant 
 
-$_SESSION["password"] = $password;
+
+
 
 if (isset($passwordLength)) {
     header('Location: ./showPassword.php');
 }
+
+//Redirect
 
 include __DIR__ . "/views/layout/head.php"
     ?>
@@ -37,6 +41,24 @@ include __DIR__ . "/views/layout/head.php"
             </label>
             <input type="number" class="form-control" name="length" id="length" placeholder="Enter the length of the password (max 70)
 ">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="letters" value="letters" id="letters">
+                <label class="form-check-label" for="letters">
+                    Letters
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="numbers" value="numbers" id="numbers">
+                <label class="form-check-label" for="numbers">
+                    Numbers
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="symbols" value="symbols" id="symbols">
+                <label class="form-check-label" for="symbols">
+                    Symbols
+                </label>
+            </div>
             <button type="submit" class="btn btn-primary">Enter</button>
         </div>
     </form>
