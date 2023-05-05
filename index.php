@@ -9,7 +9,22 @@ Invece di visualizzare la password nella index, effettuare un redirect ad una pa
 Milestone 4 (BONUS)
 Gestire ulteriori parametri per la password: quali caratteri usare fra numeri, lettere e simboli. Possono essere scelti singolarmente (es. solo numeri) oppure possono essere combinati fra loro (es. numeri e simboli, oppure tutti e tre insieme). Dare all’utente anche la possibilità di permettere o meno la ripetizione di caratteri uguali. -->
 
-<?php ?>
+<?php
+
+$passwordLength = $_GET["length"];
+var_dump($_GET);
+
+function generate_password()
+{
+    $characters = "'0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$%&\=?!";
+    // $lowerCaseChar= "abcdefghijklmnopqrstuvwxyz"; 
+    // $upperCaseChar= "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    // $numbers = '0123456789';
+    // $symbols ="$%&\=?!"
+
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +41,7 @@ Gestire ulteriori parametri per la password: quali caratteri usare fra numeri, l
 
 <body>
 
-    <form>
+    <form method="get">
         <div class="mb-3">
             <label for="length" class="form-label">Enter the length of the password (only number)
             </label>
