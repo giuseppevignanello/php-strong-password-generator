@@ -15,14 +15,14 @@ include __DIR__ . "/functions.PHP";
 
 $passwordLength = $_GET["length"];
 //password length selected by user
-var_dump($_GET);
 
-$password = password_generator($passwordLength);
+if (!empty($_GET["length"])) {
+    //avoid to show 70 char password long before to the user choice 
+    $password = password_generator($passwordLength);
+}
+
 $_SESSION["password"] = $password;
 //password constant 
-
-
-
 
 if (isset($passwordLength)) {
     header('Location: ./showPassword.php');
