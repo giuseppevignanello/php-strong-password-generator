@@ -46,8 +46,8 @@ include __DIR__ . "/views/layout/head.php";
 include __DIR__ . "/views/layout/header.php"
     ?>
 <main>
-    <div class="container">
-        <div class="card p-4">
+    <div class="container d-flex align-items-center h-100">
+        <div class="card p-4 content">
             <form method="get">
                 <div>
                     <label for="length" class="form-label">Enter the length of the password (Max 70)
