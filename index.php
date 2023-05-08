@@ -34,7 +34,6 @@ if (!empty($_GET["length"])) {
     $_SESSION["password"] = $password;
     header('Location: ./showPassword.php');
 
-
 }
 
 
@@ -43,39 +42,50 @@ if (!empty($_GET["length"])) {
 
 //Redirect
 
-include __DIR__ . "/views/layout/head.php"
+include __DIR__ . "/views/layout/head.php";
+include __DIR__ . "/views/layout/header.php"
     ?>
+<main>
+    <div class="container">
+        <div class="card p-4">
+            <form method="get">
+                <div>
+                    <label for="length" class="form-label">Enter the length of the password (Max 70)
+                    </label>
+                    <input type="number" class="form-control" name="length" id="length" placeholder="Enter the length of the password (max 70)
+                ">
+                    <div id="checkbox_section" class="my-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="letters" value="letters" id="letters"
+                                checked>
+                            <label class="form-check-label" for="letters">
+                                Letters
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="numbers" value="numbers" id="numbers"
+                                checked>
+                            <label class="form-check-label" for="numbers">
+                                Numbers
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="symbols" value="symbols" id="symbols"
+                                checked>
+                            <label class="form-check-label" for="symbols">
+                                Symbols
+                            </label>
+                        </div>
+                    </div>
 
-<body>
+                    <button type="submit" class="btn btn-primary">Enter</button>
+                </div>
+            </form>
 
-    <form method="get">
-        <div class="mb-3">
-            <label for="length" class="form-label">Enter the length of the password (Max 70)
-            </label>
-            <input type="number" class="form-control" name="length" id="length" placeholder="Enter the length of the password (max 70)
-">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="letters" value="letters" id="letters">
-                <label class="form-check-label" for="letters">
-                    Letters
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="numbers" value="numbers" id="numbers">
-                <label class="form-check-label" for="numbers">
-                    Numbers
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="symbols" value="symbols" id="symbols">
-                <label class="form-check-label" for="symbols">
-                    Symbols
-                </label>
-            </div>
-            <button type="submit" class="btn btn-primary">Enter</button>
         </div>
-    </form>
-
+    </div>
+</main>
+<?php include __DIR__ . "/views/layout/footer.php" ?>
 </body>
 
 </html>
